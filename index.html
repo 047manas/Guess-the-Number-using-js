@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./IndexStyle.css">
+</head>
+<body>
+    <header>
+        <button type="button" class="again-btn">Again</button>
+        <div class = "limit">Number between 1 to 50</div>
+    </header>
+    <main>
+        <div class = 'top'>Welcome to Guess the Number</div>
+        <div class = 'bottom'>
+            <div class="input-field" for = "user-input">
+                <label >Enter the number</label>
+                <input type = "number" id = "input-num" name = "user-input" placeholder="Enter here">
+                <button type="button" class="check-btn">Check</button>
+            </div>
+            <div class="output-field">
+                <div class = "situation">Start guess</div>
+                <div class = "score">
+                    <div class="current-score">
+                        <div>Score:</div> 
+                        <div class="score-value">0</div>
+                    </div>
+                    <div class="high-score">
+                        <div>
+                            <div>High Score:</div>
+                        <div class="high-score-value">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src = "./logic.js"></script>
+</body>
+</html>

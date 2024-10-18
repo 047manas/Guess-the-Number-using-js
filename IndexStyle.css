@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+body{
+    background-color: black;
+    color: gainsboro;
+    font-family: "Press Start 2P", system-ui;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 15%;
+    display: flex;
+    margin: 2%;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+.again-btn {
+    font-family: "Press Start 2P",system-ui;
+    font-size: larger;
+    background-color: gainsboro;
+    color: black;
+    padding: 2% 4%;
+}
+
+.limit {
+    font-size: larger;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    margin: 15%;
+    font-size: 200%;
+    font-weight: bolder;
+    margin-top: 5%;
+}
+.top {
+    border: 2px solid gainsboro;
+    padding: 2%;
+    text-align: center;
+}
+.bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.input-field,.output-field {
+    margin-top: 5%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid gainsboro;
+    padding: 5%;
+}
+.input-field > label,input,.check-btn {
+    margin-bottom: 5%;
+    margin-left: 2%;
+}
+
+input {
+    width: 50%;
+    padding: 2%;
+}
+
+.check-btn{
+    font-family: "Press Start 2P", system-ui;
+    padding: 2% 3%;
+    width: 25%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+.score{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
+.score-value,.high-score-value {
+    margin: 3% 0%;
+}
+
+@media (max-width: 700px){
+    header{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .again-btn {
+        width: 40%;
+        margin: 1%;
+        justify-content: center;
+    }
+    .bottom {
+        display: flex;
+        flex-direction: column;
+    }
+}
