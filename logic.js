@@ -51,6 +51,7 @@ document.querySelector('.check-btn').addEventListener('click',function (){
             // using ternairy operator to tell whether input is high or low 
             backgroundMessageChanger("black",(inputNumber > randomNumber ? "High" : "Low"));
             score--;
+            //display score
             operationOnScore(score);
             }
             else {
@@ -75,7 +76,7 @@ document.querySelector('.again-btn').addEventListener('click',function(){
     resetScore();
     //changing things to normal as fresh game but updating score and highscore
     backgroundMessageChanger("black","Start Guess");
+    //display score
     operationOnScore(score,highScore);
-
     generateNum();
 });
