@@ -24,6 +24,12 @@ function backgroundMessageChanger(color,text){
     document.querySelector('.situation').textContent = text;
 }
 
+//display score
+function operationOnScore(changeScore,changeHighScore = highScore){
+    document.querySelector('.score-value').textContent = changeScore;
+    document.querySelector('.high-score-value').textContent = changeHighScore;
+}
+
 // call for generate function when page is loaded
 generateNum();
 // call for setting score
@@ -35,7 +41,7 @@ document.querySelector('.check-btn').addEventListener('click',function (){
     inputNumber = (Number)(document.querySelector('#input-num').value);
     //checking the input of user
     if(!inputNumber) {
-    document.querySelector('.situation').textContent = "invalid Input";
+        backgroundMessageChanger("orange","Invalid Input");
     }
     else {
         //checking user is not out of moves
@@ -43,9 +49,9 @@ document.querySelector('.check-btn').addEventListener('click',function (){
             //comparing with generated number
             if (inputNumber !== randomNumber) {
             // using ternairy operator to tell whether input is high or low 
-            document.querySelector('.situation').textContent = inputNumber > randomNumber ? "High" : "Low";
+            backgroundMessageChanger("black",(inputNumber > randomNumber ? "High" : "Low"));
             score--;
-            document.querySelector('.score-value').textContent = score;
+            changeHighScore(score);
             }
             else {
                 // if user won the background change to green and display you won in situation class tag 
@@ -69,8 +75,7 @@ document.querySelector('.again-btn').addEventListener('click',function(){
     resetScore();
     //changing things to normal as fresh game but updating score and highscore
     backgroundMessageChanger("black","Start Guess");
-    document.querySelector('.score-value').textContent = score;
-    document.querySelector('.high-score-value').textContent = highScore;
-    
+    changeHighScore(score,highScore);
+
     generateNum();
 });
