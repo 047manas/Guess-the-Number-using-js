@@ -1,49 +1,76 @@
-''
-let score = 0;
+'use strict';
+
+//variables needed
 const maxScore = 50;
+let score;
 let highScore = 0;
 let inputNumber;
-let randomNumber = Math.trunc(((Math.random()*50)+1));
-console.log(randomNumber);
+let randomNumber;
+
+//functions section
+
+//to generate a number 
+function generateNum(){
+    randomNumber = Math.trunc(((Math.random()*50)+1));
+}
+//reset the score
+function resetScore(){
+    score = maxScore;
+}
+
+//to change background color and Message
+function backgroundMessageChanger(color,text){
+    document.querySelector('body').style.backgroundColor = color;
+    document.querySelector('.situation').textContent = text;
+}
+
+// call for generate function when page is loaded
+generateNum();
+// call for setting score
+resetScore();
+
+//if user clicked on check button
 document.querySelector('.check-btn').addEventListener('click',function (){
-    inputNumber = document.querySelector('#input-num').value;
+    // storing user input in variable 
+    inputNumber = (Number)(document.querySelector('#input-num').value);
     //checking the input of user
     if(!inputNumber) {
     document.querySelector('.situation').textContent = "invalid Input";
     }
     else {
         //checking user is not out of moves
-        if (score < maxScore){
+        if (score !== 0){
             //comparing with generated number
-            if (inputNumber > randomNumber) {
-            document.querySelector('.situation').textContent = "High";
-            score++;
-            document.querySelector('.score-value').textContent = maxScore-score;
-            }
-            else if (inputNumber < randomNumber) {
-                document.querySelector('.situation').textContent = "Low";
-                score++;
-                document.querySelector('.score-value').textContent = maxScore-score;
+            if (inputNumber !== randomNumber) {
+            // using ternairy operator to tell whether input is high or low 
+            document.querySelector('.situation').textContent = inputNumber > randomNumber ? "High" : "Low";
+            score--;
+            document.querySelector('.score-value').textContent = score;
             }
             else {
-                document.querySelector('.situation').textContent = "You Won";
-                document.querySelector('body').style.backgroundColor = 'green';
+                // if user won the background change to green and display you won in situation class tag 
+                backgroundMessageChanger("green","You Won");
             }
         }
         else {
-            document.querySelector('.situation').textContent = "Out of Moves Click Again!";
-            document.querySelector('body').style.backgroundColor = 'red';
+            //if user is lost then background color to red and diplay message and disable the check button
+            backgroundMessageChanger("red","Out of Move Click on Again");
             document.querySelector('.check-btn').style.cursor = "not allowed";
         }
     }
 });
 
 document.querySelector('.again-btn').addEventListener('click',function(){
-    if ((maxScore-score) > highScore) {
-        highScore = maxScore-score;
+    //comparing current score with high score 
+    if (score > highScore) {
+        highScore = score;
     }
-    score = 0;
-    document.querySelector('body').style.backgroundColor = 'black';
+    //resetting the score
+    resetScore();
+    //changing things to normal as fresh game but updating score and highscore
+    backgroundMessageChanger("black","Start Guess");
     document.querySelector('.score-value').textContent = score;
     document.querySelector('.high-score-value').textContent = highScore;
+    
+    generateNum();
 });
